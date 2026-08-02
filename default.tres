@@ -1,0 +1,41 @@
+[gd_resource type="Theme" format=3 uid="uid://xt1w57tvtlo3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_di7s0"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.17254902, 0.64705884, 0.5529412, 1)
+shadow_size = 1
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqk2v"]
+content_margin_top = 2.0
+bg_color = Color(0.5176471, 0.7372549, 0.6117647, 1)
+shadow_color = Color(0, 0, 0, 0.44705883)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioo17"]
+bg_color = Color(0.5176471, 0.7372549, 0.6117647, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5176471, 0.7372549, 0.6117647, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_size = 1
+shadow_offset = Vector2(2, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wse8f"]
+bg_color = Color(0.17254902, 0.64705884, 0.5529412, 1)
+
+[resource]
+Button/styles/normal = SubResource("StyleBoxFlat_di7s0")
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.44705883)
+Label/styles/normal = SubResource("StyleBoxFlat_aqk2v")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ioo17")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_wse8f")

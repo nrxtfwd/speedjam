@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cbotf1vooqdmj"]
+
+[ext_resource type="Script" uid="uid://borrnyt2gn0kr" path="res://snake_part.gd" id="1_01ayo"]
+[ext_resource type="Texture2D" uid="uid://cllmqsuti4ii8" path="res://rect.png" id="2_x3dgi"]
+[ext_resource type="PackedScene" uid="uid://5trwkrehywct" path="res://health_node.tscn" id="3_1htyn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
+size = Vector2(16, 16)
+
+[node name="snake_part" type="CharacterBody2D" unique_id=2136764371]
+collision_layer = 2
+script = ExtResource("1_01ayo")
+
+[node name="body" type="Sprite2D" parent="." unique_id=424724124]
+modulate = Color(0.95686275, 0.38039216, 0.5921569, 1)
+texture = ExtResource("2_x3dgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=748395151]
+shape = SubResource("RectangleShape2D_4gyqm")
+
+[node name="health_node" parent="." unique_id=376320787 instance=ExtResource("3_1htyn")]
+max_health = 10.0
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=1108036206]
+self_modulate = Color(0, 0, 0, 0.42745098)
+show_behind_parent = true
+z_index = -1
+position = Vector2(2, 1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_x3dgi")

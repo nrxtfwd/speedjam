@@ -1,0 +1,273 @@
+[gd_scene format=4 uid="uid://bmeof0l63w0p7"]
+
+[ext_resource type="PackedScene" uid="uid://d1vut2tss3qmg" path="res://player.tscn" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://b7gf3u13t54gv" path="res://invert_rect.png" id="2_fj7yv"]
+[ext_resource type="Theme" uid="uid://xt1w57tvtlo3" path="res://default.tres" id="3_2o6r5"]
+[ext_resource type="Texture2D" uid="uid://cllmqsuti4ii8" path="res://rect.png" id="3_tlwt5"]
+[ext_resource type="Script" uid="uid://ban22jmroww56" path="res://timer.gd" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://lgsy0hdswfmx" path="res://enemy.tscn" id="5_036b0"]
+[ext_resource type="Script" uid="uid://dclpga62ij3fq" path="res://fps.gd" id="5_dwbse"]
+[ext_resource type="Script" uid="uid://bko7lxy2iodpn" path="res://kills.gd" id="5_pkg7o"]
+[ext_resource type="Script" uid="uid://cq1362f716vq1" path="res://spawn_enemy.gd" id="7_pkg7o"]
+[ext_resource type="Script" uid="uid://cc6mt41iuynpv" path="res://health_bar.gd" id="7_wse8f"]
+[ext_resource type="Script" uid="uid://d36uptim73tiy" path="res://damaged.gd" id="8_ic0uy"]
+[ext_resource type="PackedScene" uid="uid://cbotf1vooqdmj" path="res://snake_part.tscn" id="9_ioo17"]
+[ext_resource type="PackedScene" uid="uid://dslbl31xydv8i" path="res://health_pickup.tscn" id="12_k3n1d"]
+[ext_resource type="Texture2D" uid="uid://d1wdeqftu8mh7" path="res://forcefield.png" id="14_70uel"]
+[ext_resource type="Script" uid="uid://cjyus11wsaatp" path="res://rewards.gd" id="14_hiqwa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aqk2v"]
+texture = ExtResource("3_tlwt5")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_036b0"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_aqk2v")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3n1d"]
+
+[sub_resource type="Gradient" id="Gradient_ic0uy"]
+offsets = PackedFloat32Array(0.3341346, 1)
+colors = PackedColorArray(1, 0.22000003, 0.22000003, 0, 1, 0.26999998, 0.26999998, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k3n1d"]
+gradient = SubResource("Gradient_ic0uy")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.515625, 0.515625)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2o6r5"]
+
+[node name="world" type="Node2D" unique_id=939707034]
+
+[node name="player" parent="." unique_id=1540358211 instance=ExtResource("1_f3sb7")]
+position = Vector2(225, 130)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=973058976]
+z_index = -99
+offset_right = 478.0
+offset_bottom = 274.0
+scale = Vector2(1.2, 1.2)
+color = Color(0.039215688, 0.13725491, 0.25882354, 1)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1868082703]
+visible = false
+position = Vector2(-1, -11)
+scale = Vector2(1.2, 1.2)
+tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAARAAEAAAAAAAAAAAASAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAVAAEAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAJABAAAAAAAAAAAAAKABAAAAAAAAAAAAALABAAAAAAAAAAAAAMABAAAAAAAAAAAAANABAAAAAAAAAAAAAOABAAAAAAAAAAAAAPABAAAAAAAAAAAAAQABAAAAAAAAAAAAARABAAAAAAAAAAAAASABAAAAAAAAAAAAATABAAAAAAAAAAAAAUABAAAAAAAAAAAAAVABAAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAAXAAEAAAAAAAAAAAAXAAIAAAAAAAAAAAAXAAMAAAAAAAAAAAAXAAQAAAAAAAAAAAAXAAUAAAAAAAAAAAAXAAYAAAAAAAAAAAAXAAcAAAAAAAAAAAAXAAgAAAAAAAAAAAAXAAkAAAAAAAAAAAAXAAoAAAAAAAAAAAAXAAsAAAAAAAAAAAAXAAwAAAAAAAAAAAAXAA0AAAAAAAAAAAAXAA4AAAAAAAAAAAAXAA8AAAAAAAAAAAAXABAAAAAAAAAAAAAWABAAAAAAAAAAAAAWAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_036b0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=586039004]
+position = Vector2(298, 163)
+zoom = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2005161426]
+self_modulate = Color(0.17254902, 0.64705884, 0.5529412, 1)
+offset_left = -42.0
+offset_top = -17.0
+offset_right = 496.0
+offset_bottom = 283.0
+scale = Vector2(1.2, 1.2)
+theme = ExtResource("3_2o6r5")
+texture = ExtResource("2_fj7yv")
+
+[node name="wave" type="Label" parent="TextureRect" unique_id=201866794]
+layout_mode = 0
+offset_left = 425.8333
+offset_top = 41.666664
+offset_right = 514.1666
+offset_bottom = 64.666664
+text = "Wave 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="timer" type="Label" parent="TextureRect" unique_id=302848336]
+layout_mode = 0
+offset_left = 425.8333
+offset_top = 77.5
+offset_right = 514.1666
+offset_bottom = 100.5
+text = "00:30"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_aqk2v")
+
+[node name="Timer" type="Timer" parent="TextureRect/timer" unique_id=61333971]
+autostart = true
+
+[node name="kills" type="Label" parent="TextureRect" unique_id=399203026]
+layout_mode = 0
+offset_left = 425.8333
+offset_top = 114.166664
+offset_right = 514.1666
+offset_bottom = 137.16666
+text = "0 Kills"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_pkg7o")
+
+[node name="fps" type="Label" parent="TextureRect" unique_id=822412402]
+layout_mode = 0
+offset_left = 425.8333
+offset_top = 149.16666
+offset_right = 514.1666
+offset_bottom = 172.16666
+text = "0 FPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_dwbse")
+
+[node name="health_bar" type="ProgressBar" parent="TextureRect" unique_id=648362610]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 23.333332
+offset_right = 297.5
+offset_bottom = 43.666656
+max_value = 1.0
+value = 0.5
+show_percentage = false
+script = ExtResource("7_wse8f")
+
+[node name="Label" type="Label" parent="TextureRect/health_bar" unique_id=1042921460]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.6666666
+offset_bottom = 1.666666
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k3n1d")
+text = "100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect" unique_id=1016955085]
+z_index = -98
+layout_mode = 0
+offset_left = 35.0
+offset_top = 14.166666
+offset_right = 66.25
+offset_bottom = 222.50002
+scale = Vector2(1.2, 1.2)
+color = Color(0, 0, 0, 0.38431373)
+
+[node name="ColorRect2" type="ColorRect" parent="TextureRect" unique_id=361586880]
+z_index = -98
+layout_mode = 0
+offset_left = 72.5
+offset_top = 14.166666
+offset_right = 350.97223
+offset_bottom = 37.77778
+scale = Vector2(1.2, 1.2)
+color = Color(0, 0, 0, 0.38431373)
+
+[node name="damaged" type="TextureRect" parent="." unique_id=1854289097]
+modulate = Color(1, 1, 1, 0)
+offset_left = -76.0
+offset_top = -31.0
+offset_right = 462.0
+offset_bottom = 269.0
+scale = Vector2(1.2, 1.2)
+mouse_filter = 2
+theme = ExtResource("3_2o6r5")
+texture = SubResource("GradientTexture2D_k3n1d")
+script = ExtResource("8_ic0uy")
+
+[node name="spawn_enemy" type="Timer" parent="." unique_id=1128455427]
+autostart = true
+script = ExtResource("7_pkg7o")
+enemies = Array[PackedScene]([ExtResource("5_036b0")])
+snake_part = ExtResource("9_ioo17")
+pickup = ExtResource("12_k3n1d")
+
+[node name="Node2D" type="Node2D" parent="spawn_enemy" unique_id=1330926286]
+position = Vector2(75, 66)
+
+[node name="Node2D2" type="Node2D" parent="spawn_enemy" unique_id=2039370781]
+position = Vector2(404, 62)
+
+[node name="Node2D3" type="Node2D" parent="spawn_enemy" unique_id=1136706550]
+position = Vector2(397, 165)
+
+[node name="Node2D4" type="Node2D" parent="spawn_enemy" unique_id=435738336]
+position = Vector2(395, 257)
+
+[node name="Node2D5" type="Node2D" parent="spawn_enemy" unique_id=1132987482]
+position = Vector2(77, 257)
+
+[node name="Node2D6" type="Node2D" parent="spawn_enemy" unique_id=1757948402]
+position = Vector2(88, 168)
+
+[node name="Node2D7" type="Node2D" parent="spawn_enemy" unique_id=822814783]
+position = Vector2(228, 246)
+
+[node name="Node2D8" type="Node2D" parent="spawn_enemy" unique_id=1383936105]
+position = Vector2(229, 76)
+
+[node name="rewards" type="HBoxContainer" parent="." unique_id=1923077250]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 224.0
+offset_top = 144.0
+offset_right = 264.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_hiqwa")
+
+[node name="temp" type="Button" parent="rewards" unique_id=857585791]
+visible = false
+custom_minimum_size = Vector2(110, 150)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_2o6r5")
+
+[node name="MarginContainer" type="MarginContainer" parent="rewards/temp" unique_id=1603310021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="rewards/temp/MarginContainer" unique_id=1463700090]
+layout_mode = 2
+
+[node name="title" type="Label" parent="rewards/temp/MarginContainer/VBoxContainer" unique_id=1664153364]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2o6r5")
+text = "Forcefield"
+horizontal_alignment = 1
+
+[node name="texture" type="TextureRect" parent="rewards/temp/MarginContainer/VBoxContainer" unique_id=72335192]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("14_70uel")
+stretch_mode = 5
+
+[node name="desc" type="Label" parent="rewards/temp/MarginContainer/VBoxContainer" unique_id=1697933215]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2o6r5")
+text = "getting a kill grants you a forcefield for 5s"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="timeout" from="TextureRect/timer/Timer" to="TextureRect/timer" method="_on_timer_timeout"]
+[connection signal="timeout" from="spawn_enemy" to="spawn_enemy" method="_on_timeout"]
