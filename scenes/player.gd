@@ -38,7 +38,8 @@ func handle_dash():
 		
 
 func freeze():
-	pass
+	Engine.time_scale = 0.1
+	$freeze_timer.start()
 
 func _physics_process(delta):
 	if dash:
@@ -59,5 +60,5 @@ func _on_hitbox_body_entered(body):
 	body.damaged()
 	Global.damage(self,body,5.0)
 
-func _on_timer_timeout():
+func _on_freeze_timer_timeout():
 	Engine.time_scale = 1.0

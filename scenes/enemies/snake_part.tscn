@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cbotf1vooqdmj"]
 
-[ext_resource type="Script" uid="uid://borrnyt2gn0kr" path="res://snake_part.gd" id="1_01ayo"]
-[ext_resource type="Texture2D" uid="uid://cllmqsuti4ii8" path="res://rect.png" id="2_x3dgi"]
-[ext_resource type="PackedScene" uid="uid://5trwkrehywct" path="res://health_node.tscn" id="3_1htyn"]
+[ext_resource type="Script" uid="uid://borrnyt2gn0kr" path="res://scenes/enemies/snake_part.gd" id="1_01ayo"]
+[ext_resource type="Texture2D" uid="uid://cllmqsuti4ii8" path="res://assets/rect.png" id="2_x3dgi"]
+[ext_resource type="PackedScene" uid="uid://5trwkrehywct" path="res://scenes/health_node.tscn" id="3_1htyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(16, 16)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c44hm5qgnr20y"]
 
-[ext_resource type="Script" uid="uid://df6ljnfbmsu3l" path="res://enemy_death.gd" id="1_ac67w"]
+[ext_resource type="Script" uid="uid://df6ljnfbmsu3l" path="res://scenes/enemy_death.gd" id="1_217mc"]
 
 [sub_resource type="Curve" id="Curve_5c2p6"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -14,11 +14,11 @@ particle_flag_disable_z = true
 angle_min = 1.0728835e-05
 angle_max = 360.00003
 spread = 180.0
-initial_velocity_min = 40.0
-initial_velocity_max = 60.0
+initial_velocity_min = 50.0
+initial_velocity_max = 80.0
 gravity = Vector3(0, 0, 0)
-scale_min = 3.0
-scale_max = 3.0
+scale_min = 7.0
+scale_max = 7.0
 scale_curve = SubResource("CurveTexture_ac67w")
 color = Color(0.95686275, 0.38039216, 0.5921569, 1)
 
@@ -30,6 +30,6 @@ one_shot = true
 speed_scale = 1.2
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_bqhfc")
-script = ExtResource("1_ac67w")
+script = ExtResource("1_217mc")
 
 [connection signal="finished" from="." to="." method="_on_finished"]

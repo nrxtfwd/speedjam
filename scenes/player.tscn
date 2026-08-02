@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d1vut2tss3qmg"]
 
-[ext_resource type="Texture2D" uid="uid://cllmqsuti4ii8" path="res://rect.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://7qrqjju51njv" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://half50dm1v2y" path="res://arrow.png" id="3_i3pqv"]
-[ext_resource type="PackedScene" uid="uid://5trwkrehywct" path="res://health_node.tscn" id="4_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cllmqsuti4ii8" path="res://assets/rect.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://7qrqjju51njv" path="res://scenes/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://half50dm1v2y" path="res://assets/arrow.png" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://5trwkrehywct" path="res://scenes/health_node.tscn" id="4_hqtel"]
 
 [sub_resource type="Curve" id="Curve_hqtel"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -64,9 +64,10 @@ shape = SubResource("RectangleShape2D_onrkg")
 [node name="health_node" parent="." unique_id=376320787 instance=ExtResource("4_hqtel")]
 max_health = 20.0
 
-[node name="Timer" type="Timer" parent="." unique_id=507261096]
-wait_time = 0.4
+[node name="freeze_timer" type="Timer" parent="." unique_id=507261096]
+wait_time = 0.1
+one_shot = true
 ignore_time_scale = true
 
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="freeze_timer" to="." method="_on_freeze_timer_timeout"]

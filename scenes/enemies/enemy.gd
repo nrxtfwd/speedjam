@@ -23,15 +23,17 @@ func _ready():
 	add_to_group('enemy')
 	$health_node.died.connect(died)
 
-func _physics_process(delta):
-	if attack_timer > 0.0:
-		attack_timer -= delta
+func handle_movement(delta):
 	velocity = global_position.direction_to(
 			Global.player.global_position
 		) * speed
 	look_at(global_position+velocity)
 	move_and_slide()
-	
+
+func _physics_process(delta):
+	if attack_timer > 0.0:
+		attack_timer -= delta
+	handle_movement(delta)
 	_check_player_damage()
 
 func _check_player_damage():

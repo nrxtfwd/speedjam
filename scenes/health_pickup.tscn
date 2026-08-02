@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dslbl31xydv8i"]
 
-[ext_resource type="Texture2D" uid="uid://c12obr77rywff" path="res://heal.png" id="1_01648"]
-[ext_resource type="Script" uid="uid://fdsjhb43gu06" path="res://health_pickup.gd" id="1_awyve"]
+[ext_resource type="Texture2D" uid="uid://c12obr77rywff" path="res://assets/heal.png" id="1_01648"]
+[ext_resource type="Script" uid="uid://fdsjhb43gu06" path="res://scenes/health_pickup.gd" id="1_awyve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_awyve"]
 radius = 23.021729
